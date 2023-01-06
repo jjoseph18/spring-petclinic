@@ -57,14 +57,10 @@ jobs:
           distribution: 'adopt'
           cache: maven
           
-      - name: Set up Java for publishing to GitHub Packages
-        uses: actions/setup-java@v2
+      - name: Build with Maven Wrapper
+        run: ./mvnw -B package
+      - name: Publish Package to GitHub Packages
+        uses: actions/upload-artifact@v2
         with:
-          java-version: ${{matrix.java}}
-          distribution: 'adopt'
-      - name: Publish to GitHub Packages
-        run: ./mvnw --batch-mode deploy -DaltDeploymentRepository=github::https://maven.pkg.github.com/${{ github.actor }}/${{  github.repository }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
+          name: ${{ github.repository }}
+          path: spring-petclinic/target/*.jar
