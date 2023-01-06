@@ -57,8 +57,14 @@ jobs:
           distribution: 'adopt'
           cache: maven
           
-      - name: Build with Maven Wrapper
-        run: ./mvnw -B package && ./mvnw deploy -Dregistry=https://maven.pkg.github.com/{{ github.actor }}/{{ github.repository }} -DrepositoryId=github
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Publish to GitHub Packages
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-        
 
