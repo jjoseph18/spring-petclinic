@@ -58,7 +58,7 @@ jobs:
           cache: maven
           
       - name: Build with Maven Wrapper
-        run: ./mvnw -B package && ./mvnw mvn deploy -Dregistry=https://maven.pkg.github.com/{{ github.actor }}/{{ github.repository }} -DrepositoryId=github
+        run: ./mvnw -B package && ./mvnw deploy -Dregistry=https://maven.pkg.github.com/{{ github.actor }}/{{ github.repository }} -DrepositoryId=github
 
         
 
