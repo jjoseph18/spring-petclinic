@@ -62,4 +62,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pet-clinic
-          package-path: 'target/*.jar'
+          path: 'target/*.jar'
