@@ -58,10 +58,7 @@ jobs:
           cache: maven
           
       - name: Build with Maven Wrapper
-        run: ./mvnw -B package
+        run: ./mvnw -B package && ./mvnw mvn deploy -Dregistry=https://maven.pkg.github.com/{{ github.actor }}/{{ github.repository }} -DrepositoryId=github
+
         
-      - name: Upload artifact to GitHub Packages
-        uses: actions/upload-artifact@v2
-        with:
-          name: my_artifact
-          path: target/*.jar
+
