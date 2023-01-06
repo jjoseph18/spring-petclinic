@@ -63,7 +63,18 @@ jobs:
         uses: qcastel/github-actions-maven-release@v1.12.31
         with:
           release-branch-name: ${{ github.ref }}
+          gpg-enabled: true 
+          gpg-key-id: ${{ secrets.GPG_KEY_ID }}
+          gpg-key: ${{ secrets.GPG_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          git-release-bot-name: release-bot
+          git-release-bot-email: release-bot@github.com
           maven-servers: ${{ secrets.MAVEN_SERVERS }}
+          docker-registry-id: registry.hub.docker.com
+          docker-registry-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-registry-password: ${{ secrets.DOCKER_PASSWORD }}
           access-token: ${{ secrets.GITHUB_TOKEN }}
           maven-release-publish: true
           maven-snapshot-publish: true
