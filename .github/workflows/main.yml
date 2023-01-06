@@ -63,7 +63,7 @@ jobs:
           java-version: ${{matrix.java}}
           distribution: 'adopt'
       - name: Publish to GitHub Packages
-        run: ./mvnw --batch-mode deploy
+        run: ./mvnw --batch-mode deploy -DaltDeploymentRepository=github::https://maven.pkg.github.com/${{ github.actor }}/${{  github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
