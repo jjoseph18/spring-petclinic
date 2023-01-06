@@ -58,8 +58,13 @@ jobs:
           cache: maven
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
-      - name: Publish Package to GitHub Packages
-        uses: actions/upload-artifact@v2
+        
+      - name: Java Maven release
+        uses: qcastel/github-actions-maven-release@v1.12.31
         with:
-          name: ${{ github.repository }}
-          path: target/${{ github.repository }}-*.jar
+          release-branch-name: ${{ github.ref }}
+          maven-servers: ${{ secrets.MAVEN_SERVERS }}
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          maven-release-publish: true
+          maven-snapshot-publish: true
+          maven-publish-inject-args: -Dskip.unit.tests=true
