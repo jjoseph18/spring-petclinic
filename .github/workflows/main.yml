@@ -42,23 +42,23 @@ jobs:
         run: ./mvnw -B test
            
         
-  build-and-publish:
+  package:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17' ]
+
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK ${{matrix.java}}
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
-      - name: Build with Maven
-        run: mvn -B package
-        
-      - name: NPM Bump
-        uses: bcomnes/npm-bump@v2.1.0
-        id: npm_bump # A unique id for the step
-        with:
-          git_email: ${{ secrets.GIT_EMAIL }}
-          git_username: ${{ github.actor }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          npm_token: ${{ secrets.NPM_TOKEN }}
+          java-version: ${{matrix.java}}
+          distribution: 'adopt'
+          cache: maven
 
+      - name: Deploy to GitHub Packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-package
+          path: target/*.jar
