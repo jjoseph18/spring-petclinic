@@ -60,7 +60,7 @@ jobs:
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
       - name: Publish Package to GitHub Packages
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ github.repository }}
           path: spring-petclinic/target/PetClinicApplication.jar
