@@ -59,7 +59,8 @@ jobs:
       - name: Package with Maven Wrapper
         run: ./mvnw -B package
       - name: Publish to GitHub Package Registry
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-package@v2
         with:
           name: pet-clinic
           path: 'target/*.jar'
+          
