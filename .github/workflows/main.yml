@@ -56,9 +56,12 @@ jobs:
           java-version: ${{matrix.java}}
           distribution: 'adopt'
           cache: maven
-
-      - name: Deploy to GitHub Packages
+          
+      - name: Build with Maven Wrapper
+        run: ./mvnw -B package
+        
+      - name: Upload artifact to GitHub Packages
         uses: actions/upload-artifact@v2
         with:
-          name: my-package
+          name: my_artifact
           path: target/*.jar
