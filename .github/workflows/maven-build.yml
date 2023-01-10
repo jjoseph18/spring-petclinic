@@ -36,6 +36,7 @@ jobs:
         run: |
           ls
           cd src
+          ls
           cd test
           ls
 
