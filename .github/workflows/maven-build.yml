@@ -31,6 +31,14 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml -Dsurefire.output.directory=spring-petclinic/src/test
+      
+      - name: look at directory
+        run: |
+          ls
+          cd target
+          cd src
+          cd test
+          ls
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
