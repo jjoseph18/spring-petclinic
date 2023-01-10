@@ -34,7 +34,6 @@ jobs:
       
       - name: look at directory
         run: |
-          ls
           cd src
           ls
           cd test
