@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Run tests with Maven
-        run: mvn -B test --file pom.xml -Dsurefire.output.directory=spring-petclinic/src/test
+        run: mvn -B test --file pom.xml -Dmaven.test.report.output=spring-petclinic/src/test
       
       - name: look at directory
         run: |
