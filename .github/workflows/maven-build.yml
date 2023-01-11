@@ -39,7 +39,7 @@ jobs:
         with:
           junit_files: "**/target/surefire-reports/TEST-*.xml"            
       - name: Conclusion
-        run: echo "${{steps.test-results.outputs.json}}"
+        run: echo "${{steps.test-results.outputs.json}}" > conclusion.txt
         
         
       - name: Set badge color
