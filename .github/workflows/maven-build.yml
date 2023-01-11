@@ -63,6 +63,13 @@ jobs:
           status: '${{ fromJSON( steps.test-results.outputs.json ).formatted.stats.tests }} tests, ${{ fromJSON( steps.test-results.outputs.json ).formatted.stats.runs }} runs: ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}'
           color: ${{ env.BADGE_COLOR }}
           path: badge.svg
+          
+      - name: json-to-file
+        uses: devops-actions/json-to-file@v1.0.1
+        with:
+          json: 'steps.test-results.outputs.json'
+          filename: 'test.json'
+
 
       - name: Upload badge to Gist
         # Upload only for main branch
@@ -84,5 +91,5 @@ jobs:
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.github.com/jjoseph18/f4e146b4d5c7f31af5d915bb1cc083b0
-          file: ${{fromJSON(steps.test-results.outputs.json)}}
+          file: test.json
 
