@@ -80,10 +80,10 @@ jobs:
         if: >
           github.event_name == 'workflow_run' && github.event.workflow_run.head_branch == 'main' ||
           github.event_name != 'workflow_run' && github.ref == 'refs/heads/main'
-        uses: andymckay/append-gist-action@0.1
+        uses: andymckay/append-gist-action@1fbfbbce708a39bd45846f0955ed5521f2099c6d
         with:
           gistURL: https://gist.github.com/jjoseph18/f4e146b4d5c7f31af5d915bb1cc083b0
           token: ${{ secrets.GIST_TOKEN }}
-          file: test.json
+          file: badge.svg
           suffix: '${{steps.test-results.outputs.json}}'
           
