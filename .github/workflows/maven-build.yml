@@ -85,5 +85,4 @@ jobs:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.github.com/jjoseph18/f4e146b4d5c7f31af5d915bb1cc083b0
           file: badge.svg
-          suffix: '${{steps.test-results.outputs.json}}'
-          
+
