@@ -67,7 +67,7 @@ jobs:
       - name: json-to-file
         uses: devops-actions/json-to-file@v1.0.1
         with:
-          json: '${{ fromJSON( steps.test-results.outputs.json)'
+          json: '${{steps.test-results.outputs.json)'
           filename: 'test.json'
 
 
