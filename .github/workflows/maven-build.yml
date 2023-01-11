@@ -40,7 +40,9 @@ jobs:
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
+        id: test-results
         if: always()
         with:
-          junit_files: "**/target/surefire-reports/TEST-*.xml"      
-
+          junit_files: "**/target/surefire-reports/TEST-*.xml"             
+      - name: Conclusion
+        run: echo "Conclusion is ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}"
