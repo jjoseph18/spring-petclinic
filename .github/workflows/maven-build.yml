@@ -74,7 +74,7 @@ jobs:
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.github.com/jjoseph18/0911e2e2e7e1fe5008e15e48e95547a4
-          file: badge.svg
+          file: badge.txt
         
       - name: Upload json to Gist
         # Upload only for main branch
@@ -85,5 +85,5 @@ jobs:
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.github.com/jjoseph18/f4e146b4d5c7f31af5d915bb1cc083b0
-          file: conclusion.json
+          file: coanclusion.json
 
